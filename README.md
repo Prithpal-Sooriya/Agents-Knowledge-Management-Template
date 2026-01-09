@@ -1,25 +1,45 @@
 # Agent Knowledge Management Template
 
-This is a template repo for building out an agent management knowledge system.
+> **A Shared Brain for Your Agents.**
 
-## Workflow
+This repository is a template for building a decoupled, persistent knowledge system for AI agents. It serves as a "remote brain"—a central place to store skills, context, and memories that can be accessed by any agent, anywhere.
 
-This repo follows a RPEL (Research, Plan, Execute, Learn) workflow instead of the ReAct (Reason + Act) workflow.
+## Why Use This Template?
 
-ReAct is overhyped. It is an expensive loop (taken to the extreme we see the Ralph loop), which can be very well optimised by following a Spec Driven Development (SDD) + RPEL workflow.
+### 1. The "Remote Brain" Architecture
+**Keep your agents' knowledge separate from your project code.**
+Instead of cluttering every project repository with repetitive prompt files and context docs, centralize them here. Your agents can pull the exact skills they need, when they need them, without being tied to a specific codebase.
 
-- Research: Use tools, engineers, agents to understand the problem space.
-- Plan: Generate a thorough plan (spec); break plans down into tasks and subtasks; understand tasks that can be execute in parallel vs sequential. Plan, re-plan, and plan again. The solid plan makes execution more accurate.
-- Execute: Have multiple agents execute tasks in parallel or sequential. Use local agents and remote/cloud agents.
-- Learn: Ensure that there is a reflection step inside the agent context. Agents can post updates for their working memory via github issues or separate PRs. Engineers can review and merge memory updates.
+### 2. Universal Compatibility
+**Works with everything.**
+Whether you're running local agentic workflows (like Antigravity) or using cloud-based agents, this structure is universally accessible via raw HTTP requests or git submodules. It is platform-agnostic by design.
 
+### 3. Escape the Walled Gardens
+**Your data, your format.**
+Avoid locking your agent's intelligence into proprietary ecosystems like Claude Code. This template gives you full control over your agent's "mind" using standard Markdown files that you own, version, and manage.
 
-## Agent Knowledge Base
+---
 
-It takes the intention from Claude Skills and Claude Marketplace, but extends it to be more flexible for any agent models.
+## The Workflow: Spec-Driven RPEL
 
-Claude skills are essentially a bunch of knowledge files to fill the initial context for agents.
-Claude Marketplace is a collection of skills.
+I believe functionality > hype. The traditional **ReAct** (Reason + Act) loop is often expensive and inefficient.
+This template promotes a **Spec-Driven RPEL** workflow:
 
-This repo is essentially the idea of building up specialised knowledge files for agents to use. The repo itself is the marketplace for skills.
-You can use a router agent during planning to select the best skills for a given task.
+1.  **Research**: Agents analyze the problem space using tools.
+2.  **Plan**: A Router Agent selects the right skills from this repo and generates a detailed Spec.
+3.  **Execute**: Worker agents execute the plan in parallel, using the `knowledge/` from here.
+4.  **Learn**: Agents reflect on the outcome and update their `memory/` in this repo via PRs.
+
+---
+
+## Structure
+
+-   **`knowledge/` ("Skills")**: The library of capabilities. A Router Agent picks from these files to "install" skills into a worker agent for a specific task.
+-   **`memory/` ("Context")**: The persistent working memory. Agents read this to understand who they are and what they've learned, and write back to it to save lessons for the future.
+-   **`AGENTS.md`**: The entry point. The "bootloader" that tells an agent how to use this repository.
+
+## Getting Started
+
+1.  **Use this Template**: Click "Use this template" to create your own `agent-knowledge` repo.
+2.  **Configure**: Update `AGENTS.md` with your repository URL.
+3.  **Deploy**: Give your agents the `AGENTS.md` raw URL. They now have a brain.
