@@ -43,3 +43,28 @@ This template promotes a **Spec-Driven RPEL** workflow:
 1.  **Use this Template**: Click "Use this template" to create your own `agent-knowledge` repo.
 2.  **Configure**: Update `AGENTS.md` with your repository URL.
 3.  **Deploy**: Give your agents the `AGENTS.md` raw URL. They now have a brain.
+
+---
+
+## Example Usage
+
+### 1. Planning Phase
+
+```text
+READ THIS AGENTS.md: {Path/Github raw}/AGENTS.md
+
+PLAN
+
+<Insert plan>
+```
+
+### 2. Execution Phase
+
+```text
+READ THIS AGENTS.md: {Path/Github raw}/AGENTS.md
+
+EXECUTE
+
+<insert skills URLs>
+<Insert execution steps>
+```
