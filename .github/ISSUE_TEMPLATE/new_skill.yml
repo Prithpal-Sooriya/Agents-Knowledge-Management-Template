@@ -1,0 +1,20 @@
+name: Add New Skill
+description: Propose a new skilled knowledge file
+title: "Add Skill: [Skill Name]"
+labels: ["new-skill"]
+body:
+  - type: input
+    id: filepath
+    attributes:
+      label: File Path
+      description: e.g., knowledge/docker_setup.md
+      placeholder: knowledge/my_new_skill.md
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: File Content
+      description: The full markdown content for the new file.
+    validations:
+      required: true

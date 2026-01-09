@@ -1,0 +1,21 @@
+name: Memory Update
+description: Suggest an update to the agent memory file
+title: "Memory Update: [Topic]"
+labels: ["memory-update"]
+body:
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      options:
+        - Global Rules
+        - Rules
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: Content to Add
+      description: The markdown content to append to the selected section.
+    validations:
+      required: true

@@ -1,0 +1,20 @@
+name: Update Skill
+description: Propose an update to an existing knowledge file
+title: "Update Skill: [Skill Name]"
+labels: ["update-skill"]
+body:
+  - type: input
+    id: filepath
+    attributes:
+      label: File Path
+      description: e.g., knowledge/router.md
+      placeholder: knowledge/...
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: New Content
+      description: The totally new content of the file (or diff if the action supports it, but full content is safer for simple actions).
+    validations:
+      required: true

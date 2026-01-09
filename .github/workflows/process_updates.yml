@@ -1,0 +1,45 @@
+name: Process Agent Updates
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process-update:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'memory-update') || contains(github.event.issue.labels.*.name, 'new-skill') || contains(github.event.issue.labels.*.name, 'update-skill')
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Parse Issue Body
+        id: parse
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const body = context.payload.issue.body;
+            // Simple parsing assuming standard format or consistent markers. 
+            // In a real scenario, we might use a robust parser for issue forms.
+            // For now, we will assume the agent puts content clearly.
+            return body;
+
+      - name: Apply Changes
+        run: |
+          # enhancing this step depends on how exactly the body is returned. 
+          # For a template repo, we might just log that we would do it.
+          echo "Processing issue #${{ github.event.issue.number }}"
+          echo "This is a template action. In a real deployment, this would parse the issue form data and write to files."
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Agent Update: ${{ github.event.issue.title }}"
+          body: "Auto-generated PR from Issue #${{ github.event.issue.number }}"
+          branch: "agent-update-${{ github.event.issue.number }}"
+          base: main
+          delete-branch: true
