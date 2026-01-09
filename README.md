@@ -1,5 +1,7 @@
 # Agent Knowledge Management Template
 
+[![Use this template](https://img.shields.io/badge/Use%20this%20template-2ea44f?style=for-the-badge&logo=github)](https://github.com/Prithpal-Sooriya/Agents-Knowledge-Management-Template/generate)
+
 > **A Shared Brain for Your Agents.**
 
 This repository is a template for building a decoupled, persistent knowledge system for AI agents. It serves as a "remote brain"—a central place to store skills, context, and memories that can be accessed by any agent, anywhere.
