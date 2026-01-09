@@ -30,7 +30,7 @@ This template promotes a **Spec-Driven RPEL** workflow:
 1.  **Research**: Agents analyze the problem space using tools.
 2.  **Plan**: A Router Agent selects the right skills from this repo and generates a detailed Spec.
 3.  **Execute**: Worker agents execute the plan in parallel, using the `knowledge/` from here.
-4.  **Learn**: Agents reflect on the outcome and update their `memory/` in this repo via PRs.
+4.  **Learn**: Agents reflect on the outcome and update their `memory/` in your repo via PRs.
 
 ---
 
