@@ -17,27 +17,24 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Parse Issue Body
-        id: parse
-        uses: actions/github-script@v6
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          script: |
-            const body = context.payload.issue.body;
-            // Simple parsing assuming standard format or consistent markers. 
-            // In a real scenario, we might use a robust parser for issue forms.
-            // For now, we will assume the agent puts content clearly.
-            return body;
+          bun-version: latest
+
+      - name: Run Tests
+        run: bun test ./scripts/workflow_parser.test.ts
 
       - name: Apply Changes
-        run: |
-          # enhancing this step depends on how exactly the body is returned. 
-          # For a template repo, we might just log that we would do it.
-          echo "Processing issue #${{ github.event.issue.number }}"
-          echo "This is a template action. In a real deployment, this would parse the issue form data and write to files."
-          
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_LABELS: ${{ join(github.event.issue.labels.*.name, ',') }}
+        run: bun run ./scripts/workflow_parser.ts
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
+          commit-message: "agent: update knowledge/memory from issue #${{ github.event.issue.number }}"
           title: "Agent Update: ${{ github.event.issue.title }}"
           body: "Auto-generated PR from Issue #${{ github.event.issue.number }}"
           branch: "agent-update-${{ github.event.issue.number }}"
